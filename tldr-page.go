@@ -107,4 +107,5 @@ func main() {
 	}
 	fmt.Println("If you want to contribute this page to TLDR, here is a link to the official repository")
 	fmt.Println("https://github.com/tldr-pages/tldr")
+
 }
