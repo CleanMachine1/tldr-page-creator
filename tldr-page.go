@@ -71,7 +71,6 @@ func main() {
 	defer file.Close() // Close the file at the final command
 	file.WriteString(title1 + "\n" + "\n" + desc + "\n" + link + "\n")
 
-
 	var i int
 	fmt.Println(string(colorRed), "MAX 8 commands, enter nothing for saving and exiting!", string(colorWhite))
 	for i = 1; i <= 8; i++ { // commands part of the page - allows 8
@@ -102,8 +101,7 @@ func main() {
 
 		command = "`" + command + "`"
 
-		file.WriteString("\n" + command_desc + "\n") // Write to file
-		file.WriteString("\n" + command + "\n")
+		file.WriteString("\n" + command_desc + "\n" + "\n" + command + "\n") // Write to file
 
 	}
 }
