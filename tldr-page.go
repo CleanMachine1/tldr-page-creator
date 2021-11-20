@@ -62,7 +62,7 @@ func main() {
 	link := scanner.Text()
 	link = strings.TrimSuffix(link, " ")
 	checkempty(link)
-	link = "> More information: " + link + "."
+	link = "> More information: <" + link + ">."
 
 	file, err := os.OpenFile(pagename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0755)
 	if err != nil {
@@ -70,7 +70,6 @@ func main() {
 	}
 	defer file.Close() // Close the file at the final command
 	file.WriteString(title1 + "\n" + "\n" + desc + "\n" + link + "\n")
-
 
 	var i int
 	fmt.Println(string(colorRed), "MAX 8 commands, enter nothing for saving and exiting!", string(colorWhite))
