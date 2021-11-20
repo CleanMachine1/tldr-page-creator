@@ -35,14 +35,14 @@ func main() {
 	pagename := strings.ReplaceAll(title1, " ", "-") + ".md" // for creating the file name
 	// If the command entered is (for example) git push, the white space will become - so therefore git-push.md
 
-	if _, err := os.Stat(pagename); err == nil {
+	if _, err := os.Stat(pagename); err == nil { // Check if page exists before trying to overwrite it
 		fmt.Printf("file %q already exists, overwrite it? (y/N)", pagename)
 		scanner.Scan()
 		choice := scanner.Text()
 		if choice == "y" || choice == "yes" || choice == "Yes" {
-			os.Remove(pagename)
-			os.Create(pagename)
-		} else {
+			os.Remove(pagename) // Delete the file
+			os.Create(pagename) // Recreate it, blank and empty
+		} else { // If the user input is no, then exit rather than continuing
 			fmt.Println("Exiting")
 			os.Exit(1)
 		}
@@ -69,6 +69,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer file.Close() // Close the file at the final command
+
 	file.WriteString(title1 + "\n" + "\n" + desc + "\n" + link + "\n")
 
 	var i int
@@ -104,4 +105,6 @@ func main() {
 		file.WriteString("\n" + command_desc + "\n" + "\n" + command + "\n") // Write to file
 
 	}
+	fmt.Println("If you want to contribute this page to TLDR, here is a link to the official repository")
+	fmt.Println("https://github.com/tldr-pages/tldr")
 }
