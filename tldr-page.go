@@ -10,7 +10,7 @@ import (
 	"github.com/cleanmachine1/capitalise"
 )
 
-const (
+const ( // Usage for changing the color of text
 	colorRed   = "\033[31m"
 	colorWhite = "\033[37m"
 )
@@ -53,7 +53,7 @@ func main() {
 	fmt.Println("Enter a description for the program/command:")
 	scanner.Scan()
 	desc := scanner.Text()
-	desc = strings.TrimSuffix(desc, " ")
+	desc = strings.TrimSuffix(desc, " ") // Remove blank space error
 	checkempty(desc)
 	desc = "> " + capitalise.First(desc) + "."
 
@@ -62,17 +62,17 @@ func main() {
 	link := scanner.Text()
 	link = strings.TrimSuffix(link, " ")
 	checkempty(link)
-	link = "> More information: " + link + "."
+	link = "> More information: <" + link + ">."
 
-	file, err := os.OpenFile(pagename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0755)
+	file, err := os.OpenFile(pagename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0755) // Open the file
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer file.Close() // Close the file at the final command
 
-	file.WriteString(title1 + "\n" + "\n" + desc + "\n" + link + "\n")
+	file.WriteString(title1 + "\n" + "\n" + desc + "\n" + link + "\n") // Write the title, desc, and link
 
-	var i int
+	var i int // Assign empty variable
 	fmt.Println(string(colorRed), "MAX 8 commands, enter nothing for saving and exiting!", string(colorWhite))
 	for i = 1; i <= 8; i++ { // commands part of the page - allows 8
 		fmt.Println(" 1. Enter a description for a command example:")
