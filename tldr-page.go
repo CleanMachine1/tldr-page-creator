@@ -62,13 +62,13 @@ func main() {
 	link := scanner.Text()
 	link = strings.TrimSuffix(link, " ")
 	checkempty(link)
-	link = "> More information: <" + link + ">."
+	link = "> More information: <" + link + ">." // Formating
 
 	file, err := os.OpenFile(pagename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0755) // Open the file
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer file.Close() // Close the file at the final command
+	defer file.Close() // Close the file as the final command
 
 	file.WriteString(title1 + "\n" + "\n" + desc + "\n" + link + "\n") // Write the title, desc, and link
 
@@ -81,10 +81,8 @@ func main() {
 		command_desc = strings.TrimSuffix(command_desc, " ") // Remove blankspace which the user could enter
 		command_desc = capitalise.First(command_desc)
 
-		if command_desc == "" { // Exit and save if empty
-			fmt.Println("Saving and exiting")
-			os.Exit(0)
-
+		if command_desc == "" { // Break to end
+			break
 		}
 
 		command_desc = "- " + capitalise.First(command_desc) + ":"
@@ -94,18 +92,15 @@ func main() {
 		command := scanner.Text()
 		command = strings.TrimSuffix(command, " ")
 
-		if command == "" { // Exit and save if empty
-			fmt.Println("Saving and exiting")
-			os.Exit(0)
-
+		if command == "" { // Break to end
+			break
 		}
-
 		command = "`" + command + "`"
 
 		file.WriteString("\n" + command_desc + "\n" + "\n" + command + "\n") // Write to file
 
 	}
-	fmt.Println("If you want to contribute this page to TLDR, here is a link to the official repository")
+	fmt.Println("Saving and exiting.")
+	fmt.Println("\nIf you want to contribute this page to TLDR, please use the following link:")
 	fmt.Println("https://github.com/tldr-pages/tldr")
-
 }
