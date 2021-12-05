@@ -30,7 +30,7 @@ func checkempty(input string) { // Function used to check if whether a string en
 }
 func main() {
 	fmt.Println("Enter the name of the program/command:")
-	title1 := reader()
+	title1 := reader() // Uses bufio in a function to limit repeated code
 	checkempty(title1) // Check if title1 is whitespace/blank
 
 	title1 = strings.TrimSuffix(title1, " ")                 // Removes commonly applied extra space when entering values
@@ -79,7 +79,7 @@ func main() {
 		command_desc = strings.TrimSuffix(command_desc, " ") // Remove blankspace which the user could enter
 		command_desc = capitalise.First(command_desc)
 
-		if command_desc == "" { // Break to end
+		if command_desc == "" { // Break to end if empty
 			break
 		}
 
