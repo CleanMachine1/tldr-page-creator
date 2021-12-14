@@ -36,7 +36,11 @@ To Run:
 
 To Install:
 
-`go build tldr-page.go && sudo mv tldr-page /usr/local/bin/`
+```
+git clone https://github.com/CleanMachine1/tldr-page-creator.git
+cd tldr-page-creator
+go build tldr-page.go && sudo mv tldr-page /usr/local/bin/
+```
 
 Then after installation:
 
