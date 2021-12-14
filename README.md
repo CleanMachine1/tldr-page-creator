@@ -50,7 +50,7 @@ Then after installation:
 
 If you chose to install TLDR Page Creator and wish to uninstall:
 
-`sudo rm /usr/bin/local/tldr-page`
+`sudo rm /usr/local/bin/tldr-page`
 
 ## License
 
