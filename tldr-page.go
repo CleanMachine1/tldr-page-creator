@@ -11,7 +11,6 @@ import (
 )
 
 const ( // Usage for changing the color of text
-	colorRed   = "\033[31m"
 	colorWhite = "\033[37m"
 	colorBlue = "\033[36m"
 )
