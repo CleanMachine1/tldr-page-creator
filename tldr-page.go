@@ -156,5 +156,5 @@ func main() {
 	fmt.Print(" and exiting.\n")
 	fmt.Println("If you want to contribute this page to TLDR, please follow the instructions ")
 	fmt.Println("from the following link:")
-	fmt.Print(string(colorBlue), "https://github.com/tldr-pages/tldr#how-do-i-contribute\n",string(colorWhite))
+	fmt.Print(string(colorBlue), "https://github.com/tldr-pages/tldr#how-do-i-contribute\n", string(colorWhite))
 }
