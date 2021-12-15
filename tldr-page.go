@@ -40,10 +40,12 @@ func checkempty(input string) { // Function used to check if whether a string en
 func main() {
 	fmt.Println("Enter the name of the program/command:")
 	title1 := reader() // Uses bufio in a function to limit repeated code
+
+	command_desc = removesuffix(command_desc) // Remove blankspace which the user could enter
+	command_desc = remove_punctuation(command_desc)
+	command_desc = removesuffix(command_desc) // Remove potential trailing whitespace which could have been before the punctuation.	pagename := strings.ReplaceAll(title1, " ", "-") + ".md" // for creating the file name
 	checkempty(title1) // Check if title1 is whitespace/blank
 
-	title1 = removesuffix(title1) // Removes commonly applied extra space when entering values
-	pagename := strings.ReplaceAll(title1, " ", "-") + ".md" // for creating the file name
 	// If the command entered is (for example) git push, the white space will become - so therefore git-push.md
 
 	if _, err := os.Stat(pagename); err == nil { // Check if page exists before trying to overwrite it
@@ -62,7 +64,9 @@ func main() {
 
 	fmt.Println("Enter a description for the program/command:")
 	desc := reader()
-	desc = removesuffix(desc) // Remove blank space error
+	command_desc = removesuffix(command_desc) // Remove blankspace which the user could enter
+	command_desc = remove_punctuation(command_desc)
+	command_desc = removesuffix(command_desc) // Remove potential trailing whitespace which could have been before the punctuation.	pagename := strings.ReplaceAll(title1, " ", "-") + ".md" // for creating the file name
 	checkempty(desc)
 	desc = "> " + capitalise.First(desc) + "."
 
