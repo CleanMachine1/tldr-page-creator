@@ -24,8 +24,9 @@ i
 */
 
 const ( // Usage for changing the color of text
-	colorWhite = "\033[37m"
-	colorBlue  = "\033[36m"
+	colorWhite  = "\033[37m"
+	colorBlue   = "\033[36m"
+	colorYellow = "\033[33m"
 )
 
 func removesuffix(input string) string { // Function used for removing trailing whitespace
@@ -68,8 +69,11 @@ func main() {
 	// If the command entered is (for example) git push, the white space will become - so therefore git-push.md
 
 	if _, err := os.Stat(pagename); err == nil { // Check if page exists before trying to overwrite it
+		fmt.Print(string(colorYellow))
 		fmt.Printf("file %q already exists, overwrite it? (y/N)", pagename)
+		fmt.Print(string(colorWhite))
 		choice := reader()
+		
 		if choice == "y" || choice == "yes" || choice == "Yes" {
 			os.Remove(pagename) // Delete the file
 			os.Create(pagename) // Recreate it, blank and empty
