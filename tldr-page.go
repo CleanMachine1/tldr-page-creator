@@ -21,6 +21,10 @@ func removesuffix(input string) string { // Function used for removing trailing 
 }
 func remove_punctuation(input string) string { // Function to fix errors regarding syntax
 	temp := strings.Trim(input, ".:`-># ")
+	/* This function achieves the ability for the user to be able enter punctuation.
+	For example, if the user enters "> Version control system."
+	This function will still allow the page to have the correct punctuation without duplicating it
+	*/
 	return temp
 }
 func reader() string { // Function for collecting user input easier
@@ -38,10 +42,10 @@ func checkempty(input string) { // Function used to check if whether a string en
 }
 func main() {
 	fmt.Println("Enter the name of the program/command:")
-	title1 := reader()            // Uses bufio in a function to limit repeated code
-	checkempty(title1)            // Check if title1 is whitespace/blank
-	title1 = removesuffix(title1) // Remove blankspace which the user could enter
-	title1 = remove_punctuation(title1)
+	title1 := reader()                                       // Uses bufio in a function to limit repeated code
+	checkempty(title1)                                       // Check if title1 is whitespace/blank
+	title1 = removesuffix(title1)                            // Remove blankspace which the user could enter
+	title1 = remove_punctuation(title1)                      // Removes the punctuation which the user could enter
 	pagename := strings.ReplaceAll(title1, " ", "-") + ".md" // for creating the file name
 
 	// If the command entered is (for example) git push, the white space will become - so therefore git-push.md
