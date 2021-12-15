@@ -19,6 +19,13 @@ func removesuffix(input string) string { // Function used for removing trailing 
 	temp := strings.TrimSpace(input)
 	return temp
 }
+func remove_punctuation(input string) string { //trims punctuation
+	temp := strings.TrimSuffix(input,":")
+	temp = strings.TrimSuffix(temp,".")
+	temp = strings.TrimSuffix(temp,",")
+	temp = strings.TrimSuffix(temp,"!")
+	return temp
+}
 func reader() string { // Function for collecting user input easier
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
@@ -37,7 +44,7 @@ func main() {
 	title1 := reader() // Uses bufio in a function to limit repeated code
 	checkempty(title1) // Check if title1 is whitespace/blank
 
-	title1 = removesuffix(title1)                            // Removes commonly applied extra space when entering values
+	title1 = removesuffix(title1) // Removes commonly applied extra space when entering values
 	pagename := strings.ReplaceAll(title1, " ", "-") + ".md" // for creating the file name
 	// If the command entered is (for example) git push, the white space will become - so therefore git-push.md
 
@@ -81,7 +88,11 @@ func main() {
 		fmt.Printf("Command %d/8\n", i)
 		fmt.Println(" Part 1. Enter a description for a command example:")
 		command_desc := reader()
+		// remove suffix is run twice in case there is a space before the punctuation
 		command_desc = removesuffix(command_desc) // Remove blankspace which the user could enter
+		command_desc = remove_punctuation(command_desc)
+		command_desc = removesuffix(command_desc) // Remove blankspace which the user could enter
+
 		command_desc = capitalise.First(command_desc)
 
 		if command_desc == "" { // Break to end if empty
