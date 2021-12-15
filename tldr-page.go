@@ -86,7 +86,6 @@ func main() {
 		fmt.Printf("Command %d/8\n", i)
 		fmt.Println(" Part 1. Enter a description for a command example:")
 		command_desc := reader()
-		// remove suffix is run twice in case there is a space before the punctuation
 		command_desc = removesuffix(command_desc) // Remove blankspace which the user could enter
 		command_desc = remove_punctuation(command_desc)
 		command_desc = removesuffix(command_desc) // Remove potential trailing whitespace which could have been before the punctuation.
