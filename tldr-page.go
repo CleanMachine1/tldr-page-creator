@@ -102,7 +102,11 @@ func main() {
 		file.WriteString("\n" + command_desc + "\n" + "\n" + command + "\n") // Write to file
 
 	}
-	fmt.Println("Saving and exiting.")
-	fmt.Println("\nIf you want to contribute this page to TLDR, please use the following link:")
-	fmt.Println("https://github.com/tldr-pages/tldr")
+	path, err := os.Getwd()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println("Saving to " + path + "/" + pagename + " and exiting.")
+	fmt.Println("\nIf you want to contribute this page to TLDR, please follow the instructions ")
+	fmt.Println("in the following link: https://github.com/tldr-pages/tldr#how-do-i-contribute")
 }
