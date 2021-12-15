@@ -16,12 +16,20 @@ However some of the following syntax is complete in this program:
 
 Limitations:
 
-- 1 line of description for the main command (will be added later)
 - Lack of flags/arguments which can be used (planned to be added)
 - "Token syntax"
 - User specific errors (Open issues if required!)
 
-## Installation/Usage
+## Usage
+
+```text
+Usage: tldr-page [options]
+
+Options:
+    -2: Use 2 lines of description in the page
+```
+
+## Installation
 
 Requirements:
 
@@ -39,7 +47,7 @@ cd tldr-page-creator
 go build tldr-page.go && sudo mv tldr-page /usr/local/bin/
 ```
 
-Then after installation:
+Then after installation, to execute:
 
 `tldr-page`
 
