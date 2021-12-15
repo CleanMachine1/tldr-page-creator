@@ -103,6 +103,7 @@ func main() {
 	fmt.Println(string(colorBlue), "MAX 8 commands, enter nothing for saving and exiting!", string(colorWhite))
 	for i = 1; i <= 8; i++ { // commands part of the page - allows 8
 		fmt.Printf("Command %d/8\n", i)
+		
 		fmt.Println(" Part 1. Enter a description for a command example:")
 		command_desc := reader()
 		command_desc = removesuffix(command_desc) // Remove blankspace which the user could enter
@@ -124,11 +125,13 @@ func main() {
 		if command == "" { // Break to end
 			break
 		}
+
 		command = "`" + command + "`"
 
 		file.WriteString("\n" + command_desc + "\n" + "\n" + command + "\n") // Write to file
 
 	}
+
 	path, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
