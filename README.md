@@ -7,16 +7,8 @@ This doesn't substitute learning the syntax and you should definitely read the g
 - https://github.com/tldr-pages/tldr/blob/main/contributing-guides/style-guide.md
 - https://github.com/tldr-pages/tldr/blob/main/contributing-guides/git-terminal.md
 
-However some of the following syntax is complete in this program:
-
-- Title
-- Punctuation (backticks, periods/full stops, dashes, greater-than symbol and colons)
-- Preset for adding "More information:"
-- Formatting of the page
-
 Limitations:
 
-- Lack of flags/arguments which can be used (planned to be added)
 - "Token syntax"
 - User specific errors (Open issues if required!)
 
