@@ -2,8 +2,6 @@
 
 TLDR Page Creator is a program designed to help users make TLDR pages, while avoiding syntax errors from TLDR-style markdown.
 
-**It's currently work-in-progress**
-
 This doesn't substitute learning the syntax and you should definitely read the guides wrote by TLDR contributors and maintainers:
 
 - https://github.com/tldr-pages/tldr/blob/main/contributing-guides/style-guide.md
@@ -18,8 +16,7 @@ However some of the following syntax is complete in this program:
 
 Limitations:
 
-- 1 line of description for the main command (will be fixed later)
-- Checking for user-given punctuation (planned to be added)
+- 1 line of description for the main command (will be added later)
 - Lack of flags/arguments which can be used (planned to be added)
 - "Token syntax"
 - User specific errors (Open issues if required!)
@@ -36,7 +33,7 @@ To Run:
 
 To Install:
 
-```
+```shell
 git clone https://github.com/CleanMachine1/tldr-page-creator.git
 cd tldr-page-creator
 go build tldr-page.go && sudo mv tldr-page /usr/local/bin/
