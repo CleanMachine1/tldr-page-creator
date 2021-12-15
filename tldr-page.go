@@ -104,7 +104,7 @@ func main() {
 	}
 	path, err := os.Getwd()
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 	fmt.Println("Saving to " + path + "/" + pagename + " and exiting.")
 	fmt.Println("\nIf you want to contribute this page to TLDR, please follow the instructions ")
