@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -53,6 +54,9 @@ func checkempty(input string) { // Function used to check if whether a string en
 	}
 }
 func main() {
+	flagvar := flag.Bool("2", false, "Use 2 lines in the description")
+	flag.Parse()
+
 	fmt.Println("Enter the name of the program/command:")
 	title1 := reader()                  // Uses bufio in a function to limit repeated code
 	checkempty(title1)                  // Check if title1 is whitespace/blank
@@ -78,12 +82,23 @@ func main() {
 	title1 = "# " + title1 // For when writing to page, for TLDR syntax
 
 	fmt.Println("Enter a description for the program/command:")
-	desc := reader()
-	checkempty(desc)
-	desc = removesuffix(desc) // Remove blankspace which the user could enter
-	desc = remove_punctuation(desc)
+	desc1 := reader()
+	checkempty(desc1)
+	desc1 = removesuffix(desc1) // Remove blankspace which the user could enter
+	desc1 = remove_punctuation(desc1)
 
-	desc = "> " + capitalise.First(desc) + "."
+	desc := "> " + capitalise.First(desc1) + "."
+
+	if *flagvar { // If the flag is raised then:
+		fmt.Println("Enter a second description for the program/command")
+		desc2 := reader()
+		checkempty(desc2)
+		desc2 = removesuffix(desc2)
+		desc2 = remove_punctuation(desc2)
+
+		// Change the desc variable to include desc2
+		desc = desc + "\n> " + capitalise.First(desc2) + "."
+	}
 
 	fmt.Println("Enter a more information link:")
 	link := reader()
@@ -103,7 +118,7 @@ func main() {
 	fmt.Println(string(colorBlue), "MAX 8 commands, enter nothing for saving and exiting!", string(colorWhite))
 	for i = 1; i <= 8; i++ { // commands part of the page - allows 8
 		fmt.Printf("Command %d/8\n", i)
-		
+
 		fmt.Println(" Part 1. Enter a description for a command example:")
 		command_desc := reader()
 		command_desc = removesuffix(command_desc) // Remove blankspace which the user could enter
