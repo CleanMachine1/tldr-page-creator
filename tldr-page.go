@@ -108,5 +108,5 @@ func main() {
 	}
 	fmt.Println("Saving to " + path + "/" + pagename + " and exiting.")
 	fmt.Println("\nIf you want to contribute this page to TLDR, please follow the instructions ")
-	fmt.Println("using the following link: https://github.com/tldr-pages/tldr#how-do-i-contribute")
+	fmt.Println("from the following link: https://github.com/tldr-pages/tldr#how-do-i-contribute")
 }
