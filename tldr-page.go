@@ -20,10 +20,8 @@ func removesuffix(input string) string { // Function used for removing trailing 
 	return temp
 }
 func remove_punctuation(input string) string { //trims punctuation
-	temp := strings.TrimSuffix(input,":")
-	temp = strings.TrimSuffix(temp,".")
-	temp = strings.TrimSuffix(temp,",")
-	temp = strings.TrimSuffix(temp,"!")
+	temp := strings.TrimRight(input, "!.-\",:` ")
+	temp = strings.TrimLeft(input, "-<>`# ")
 	return temp
 }
 func reader() string { // Function for collecting user input easier
