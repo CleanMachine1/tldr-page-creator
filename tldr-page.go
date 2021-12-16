@@ -151,10 +151,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Print("Saving to ", string(colorBlue))
-	fmt.Print(path + "/" + pagename ,string(colorWhite))
-	fmt.Print(" and exiting.\n")
-	fmt.Println("If you want to contribute this page to TLDR, please follow the instructions ")
-	fmt.Println("from the following link:")
+	fmt.Print("Saving to ", string(colorBlue), path+"/"+pagename, string(colorWhite), " and exiting.\n")
+	fmt.Println("If you want to contribute this page to TLDR, please follow the instructions\nfrom the following link:")
 	fmt.Print(string(colorBlue), "https://github.com/tldr-pages/tldr#how-do-i-contribute\n", string(colorWhite))
 }
