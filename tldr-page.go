@@ -70,7 +70,7 @@ func main() {
 
 	if _, err := os.Stat(pagename); err == nil { // Check if page exists before trying to overwrite it
 		fmt.Print(string(colorYellow))
-		fmt.Printf("file %q already exists, overwrite it? (y/N)", pagename)
+		fmt.Printf("file %q already exists, overwrite it? (y/N) ", pagename)
 		fmt.Print(string(colorWhite))
 		choice := reader()
 		
