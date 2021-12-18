@@ -119,7 +119,7 @@ func main() {
 	file.WriteString(title1 + "\n" + "\n" + desc + "\n" + link + "\n") // Write the title, desc, and link
 
 	var i int // Assign empty variable
-	fmt.Println(string(colorBlue), "MAX 8 commands, enter nothing for saving and exiting!", string(colorWhite))
+	fmt.Println(string(colorBlue), "MAX 8 commands, to exit and save early, enter no input.", string(colorWhite))
 	for i = 1; i <= 8; i++ { // commands part of the page - allows 8
 		fmt.Printf("Command %d/8\n", i)
 
