@@ -55,7 +55,7 @@ func checkempty(input string) { // Function used to check if whether a string en
 	}
 }
 func main() {
-	flagvar := flag.Bool("2", false, "Use 2 lines in the description")
+	flagvar := flag.Bool("2", false, "Use 2 lines in the description") // id = 2, default = false, description = "Use 2 lines in the description"
 	flag.Parse()
 
 	fmt.Println("Enter the name of the program/command:")
@@ -73,7 +73,7 @@ func main() {
 		fmt.Printf("file %q already exists, overwrite it? (y/N) ", pagename)
 		fmt.Print(string(colorWhite))
 		choice := reader()
-		
+
 		if choice == "y" || choice == "yes" || choice == "Yes" {
 			os.Remove(pagename) // Delete the file
 			os.Create(pagename) // Recreate it, blank and empty
