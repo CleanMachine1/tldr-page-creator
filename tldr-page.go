@@ -41,7 +41,7 @@ func remove_punctuation(input string) string { // Function to fix errors regardi
 	*/
 	return temp
 }
-func reader() string { // Function for collecting user input easier
+func reader() string { // Function for collecting user input easier as a string
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	input := scanner.Text()
