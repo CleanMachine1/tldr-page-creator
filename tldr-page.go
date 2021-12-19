@@ -94,7 +94,7 @@ func main() {
 	desc := "> " + capitalise.First(desc1) + "."
 
 	if *flagvar { // If the flag is raised then:
-		fmt.Println("Enter a second description for the program/command")
+		fmt.Println("Enter a second description for the program/command:")
 		desc2 := reader()
 		checkempty(desc2)
 		desc2 = removesuffix(desc2)
