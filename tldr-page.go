@@ -75,8 +75,7 @@ func main() {
 		choice := reader()
 
 		if choice == "y" || choice == "yes" || choice == "Yes" {
-			os.Remove(pagename) // Delete the file
-			os.Create(pagename) // Recreate it, blank and empty
+			os.Remove(pagename) // Delete the file, to be created later
 		} else { // If the user input is no, then exit rather than continuing
 			fmt.Println("Exiting")
 			os.Exit(1)
