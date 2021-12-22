@@ -131,6 +131,7 @@ func main() {
 		command_desc = capitalise.First(command_desc)
 
 		if command_desc == "" { // Break to end if empty
+			// Wont use checkempty() since we don't want to exit
 			break
 		}
 
