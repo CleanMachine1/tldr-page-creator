@@ -24,6 +24,7 @@ i
 */
 
 const ( // Usage for changing the color of text
+	version     = "v1.2"
 	colorWhite  = "\033[37m"
 	colorBlue   = "\033[36m"
 	colorYellow = "\033[33m"
@@ -55,8 +56,15 @@ func checkempty(input string) { // Function used to check if whether a string en
 	}
 }
 func main() {
-	flagvar := flag.Bool("2", false, "Use 2 lines in the description") // id = 2, default = false, description = "Use 2 lines in the description"
+	doubledescflag := flag.Bool("2", false, "Use 2 lines in the description") // id = 2, default = false, description = "Use 2 lines in the description"
+	versionflag := flag.Bool("v", false, "Display version")
+	// -h comes with using the flag package
 	flag.Parse()
+
+	if *versionflag {
+		fmt.Println("Display version:", version)
+		os.Exit(0)
+	}
 
 	fmt.Println("Enter the name of the program/command:")
 	title1 := reader()                  // Uses bufio in a function to limit repeated code
@@ -92,7 +100,7 @@ func main() {
 
 	desc := "> " + capitalise.First(desc1) + "."
 
-	if *flagvar { // If the flag is raised then:
+	if *doubledescflag { // If the flag is raised then:
 		fmt.Println("Enter a second description for the program/command:")
 		desc2 := reader()
 		checkempty(desc2)

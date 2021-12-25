@@ -19,6 +19,7 @@ Usage: tldr-page [options]
 
 Options:
     -2: Use 2 lines of description in the page
+    -v: Display version
     -h: Display help
 ```
 
