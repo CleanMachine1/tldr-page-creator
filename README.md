@@ -24,6 +24,17 @@ Options:
 
 ## Installation
 
+<details>
+<summary>AUR PKGBUILD installation</summary>
+
+To install using an AUR package manager such as `yay`:
+
+```shell
+yay -S tldr-page
+```
+
+</details>
+
 Requirements:
 
 - A Go compiler
