@@ -30,10 +30,6 @@ const ( // Usage for changing the color of text
 	colorYellow = "\033[33m"
 )
 
-func removesuffix(input string) string { // Function used for removing trailing whitespace
-	temp := strings.TrimSpace(input)
-	return temp
-}
 func remove_punctuation(input string) string { // Function to fix errors regarding syntax
 	temp := strings.Trim(input, ".:`-># ")
 	/* This function achieves the ability for the user to be able enter punctuation.
@@ -69,7 +65,6 @@ func main() {
 	fmt.Println("Enter the name of the program/command:")
 	title1 := reader()                  // Uses bufio in a function to limit repeated code
 	checkempty(title1)                  // Check if title1 is whitespace/blank
-	title1 = removesuffix(title1)       // Remove blankspace which the user could enter
 	title1 = remove_punctuation(title1) // Removes the punctuation which the user could enter
 
 	pagename := strings.ReplaceAll(title1, " ", "-") + ".md" // for creating the file name
@@ -95,7 +90,6 @@ func main() {
 	fmt.Println("Enter a description for the program/command:")
 	desc1 := reader()
 	checkempty(desc1)
-	desc1 = removesuffix(desc1) // Remove blankspace which the user could enter
 	desc1 = remove_punctuation(desc1)
 
 	desc := "> " + capitalise.First(desc1) + "."
@@ -104,7 +98,6 @@ func main() {
 		fmt.Println("Enter a second description for the program/command:")
 		desc2 := reader()
 		checkempty(desc2)
-		desc2 = removesuffix(desc2)
 		desc2 = remove_punctuation(desc2)
 
 		// Change the desc variable to include desc2
@@ -113,7 +106,6 @@ func main() {
 
 	fmt.Println("Enter a more information link:")
 	link := reader()
-	link = removesuffix(link)
 	checkempty(link)
 	link = "> More information: <" + link + ">." // Formating
 
@@ -132,7 +124,6 @@ func main() {
 
 		fmt.Println(" Part 1. Enter a description for a command example:")
 		command_desc := reader()
-		command_desc = removesuffix(command_desc) // Remove blankspace which the user could enter
 		command_desc = remove_punctuation(command_desc)
 
 		command_desc = capitalise.First(command_desc)
@@ -146,7 +137,6 @@ func main() {
 
 		fmt.Println(" Part 2. Now enter the corresponding command:") // Part 2
 		command := reader()
-		command = removesuffix(command)
 		command = remove_punctuation(command)
 
 		if command == "" { // Break to end
