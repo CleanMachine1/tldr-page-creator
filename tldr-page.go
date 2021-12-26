@@ -30,13 +30,22 @@ const ( // Usage for changing the color of text
 	colorYellow = "\033[33m"
 )
 
-func remove_punctuation(input string) string { // Function to fix errors regarding syntax
-	temp := strings.Trim(input, ".:`-># ")
+func remove_punctuation(input string, choice int) string { // Function to fix errors regarding syntax
+	switch choice {
+	case 1:
+		temp := strings.Trim(input, ".:-># ") // without backticks
+		return temp
+
+	default:
+		temp := strings.Trim(input, ".:`-># ")
+		return temp
+
+	}
+
 	/* This function achieves the ability for the user to be able enter punctuation.
 	For example, if the user enters "> Version control system."
 	This function will still allow the page to have the correct punctuation without duplicating it
 	*/
-	return temp
 }
 func reader() string { // Function for collecting user input easier as a string
 	scanner := bufio.NewScanner(os.Stdin)
@@ -63,9 +72,9 @@ func main() {
 	}
 
 	fmt.Println("Enter the name of the program/command:")
-	title1 := reader()                  // Uses bufio in a function to limit repeated code
-	checkempty(title1)                  // Check if title1 is whitespace/blank
-	title1 = remove_punctuation(title1) // Removes the punctuation which the user could enter
+	title1 := reader()                     // Uses bufio in a function to limit repeated code
+	checkempty(title1)                     // Check if title1 is whitespace/blank
+	title1 = remove_punctuation(title1, 1) // Removes the punctuation which the user could enter
 
 	pagename := strings.ReplaceAll(title1, " ", "-") + ".md" // for creating the file name
 
@@ -90,7 +99,7 @@ func main() {
 	fmt.Println("Enter a description for the program/command:")
 	desc1 := reader()
 	checkempty(desc1)
-	desc1 = remove_punctuation(desc1)
+	desc1 = remove_punctuation(desc1, 1)
 
 	desc := "> " + capitalise.First(desc1) + "."
 
@@ -98,7 +107,7 @@ func main() {
 		fmt.Println("Enter a second description for the program/command:")
 		desc2 := reader()
 		checkempty(desc2)
-		desc2 = remove_punctuation(desc2)
+		desc2 = remove_punctuation(desc2, 1)
 
 		// Change the desc variable to include desc2
 		desc = desc + "\n> " + capitalise.First(desc2) + "."
@@ -124,7 +133,7 @@ func main() {
 
 		fmt.Println(" Part 1. Enter a description for a command example:")
 		command_desc := reader()
-		command_desc = remove_punctuation(command_desc)
+		command_desc = remove_punctuation(command_desc, 1)
 
 		command_desc = capitalise.First(command_desc)
 
@@ -137,7 +146,7 @@ func main() {
 
 		fmt.Println(" Part 2. Now enter the corresponding command:") // Part 2
 		command := reader()
-		command = remove_punctuation(command)
+		command = remove_punctuation(command, 0) // with 0 because we need the backticks to be removed since users may enter them
 
 		if command == "" { // Break to end
 			break
