@@ -58,7 +58,7 @@ func main() {
 	flag.Parse()
 
 	if *versionflag {
-		fmt.Println("Display version:", version)
+		fmt.Println("TLDR-page version:", version)
 		os.Exit(0)
 	}
 
