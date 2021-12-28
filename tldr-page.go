@@ -143,7 +143,7 @@ func main() {
 		command = "`" + command + "`"
 
 		file.WriteString("\n" + command_desc + "\n" + "\n" + command + "\n") // Write to file
-
+		fmt.Printf("\n")
 	}
 
 	path, err := os.Getwd()
