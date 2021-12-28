@@ -11,24 +11,27 @@ import (
 	"github.com/cleanmachine1/capitalise"
 )
 
-/* Variables to track:
-title1
-pagename
-desc
-link
-file
-command
-command_desc
-path
-i
-*/
-
 const ( // Usage for changing the color of text
 	version     = "v1.3"
 	colorWhite  = "\033[37m"
 	colorBlue   = "\033[36m"
 	colorYellow = "\033[33m"
 )
+
+func checkempty(input string) { // Function used to check if whether a string entered is empty/whitespace
+	input = strings.ReplaceAll(input, " ", "") // if the string given is "      ", its still blank
+	if input == "" {
+		fmt.Println("Exiting, invalid input!")
+		os.Exit(1)
+	}
+}
+
+func reader() string { // Function for collecting user input easier as a string
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	input := scanner.Text()
+	return input
+}
 
 func remove_punctuation(input string, choice int) string { // Function to fix errors regarding syntax
 	switch choice {
@@ -42,28 +45,13 @@ func remove_punctuation(input string, choice int) string { // Function to fix er
 
 	}
 
-	/* This function achieves the ability for the user to be able enter punctuation.
-	For example, if the user enters "> Version control system."
-	This function will still allow the page to have the correct punctuation without duplicating it
-	*/
+	// This sanitizes the users in attempt to match TLDR's syntax
 }
-func reader() string { // Function for collecting user input easier as a string
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	input := scanner.Text()
-	return input
-}
-func checkempty(input string) { // Function used to check if whether a string entered is empty/whitespace
-	input = strings.ReplaceAll(input, " ", "") // if the string given is "      ", its still blank
-	if input == "" {
-		fmt.Println("Exiting, invalid input!")
-		os.Exit(1)
-	}
-}
+
 func main() {
-	doubledescflag := flag.Bool("2", false, "Use 2 lines in the description") // id = 2, default = false, description = "Use 2 lines in the description"
+	doubledescflag := flag.Bool("2", false, "Use 2 lines in the description") // format: parameter, default, description
 	versionflag := flag.Bool("v", false, "Display version")
-	// -h comes with using the flag package
+	// -h comes with using the flag package using the descriptions of each flag
 	flag.Parse()
 
 	if *versionflag {
