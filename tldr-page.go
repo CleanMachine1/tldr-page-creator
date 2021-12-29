@@ -160,6 +160,7 @@ func main() {
 		cmd := exec.Command(`bash`, `-c`, command_string) // execute the command
 		cmd.Stderr = os.Stderr
 		cmd.Stdout = os.Stdout
+		cmd.Stdin = os.Stdin
 		cmd.Run()
 	}
 
