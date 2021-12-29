@@ -156,7 +156,7 @@ func main() {
 	fmt.Println("Would you like to open the page in your default text editor? (y/N) ")
 	further_edits_choice := Reader()
 	if further_edits_choice == "y" || further_edits_choice == "yes" || further_edits_choice == "Yes" {
-		command_string := "$EDITOR " + pagename
+		command_string := "$EDITOR " + pagename // prepare a string for the exec.Command to use
 		cmd := exec.Command(`bash`, `-c`, command_string) // execute the command
 		cmd.Stderr = os.Stderr
 		cmd.Stdout = os.Stdout
