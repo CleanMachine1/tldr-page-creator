@@ -16,6 +16,8 @@ const ( // Usage for changing the color of text
 	colorWhite  = "\033[37m"
 	colorBlue   = "\033[36m"
 	colorYellow = "\033[33m"
+	Underline   = "\033[4m"
+	Normal      = "\033[0m"
 )
 
 func checkempty(input string) { // Function used to check if whether a string entered is empty/whitespace
@@ -69,9 +71,7 @@ func main() {
 	// If the command entered is (for example) git push, the white space will become - so therefore git-push.md
 
 	if _, err := os.Stat(pagename); err == nil { // Check if page exists before trying to overwrite it
-		fmt.Print(string(colorYellow))
-		fmt.Printf("file %q already exists, overwrite it? (y/N) ", pagename)
-		fmt.Print(string(colorWhite))
+		fmt.Printf(string(colorYellow)+"file %q already exists, overwrite it? (y/N) "+string(colorWhite), pagename)
 		choice := reader()
 
 		if choice == "y" || choice == "yes" || choice == "Yes" {
@@ -115,11 +115,11 @@ func main() {
 	file.WriteString(title1 + "\n" + "\n" + desc + "\n" + link + "\n") // Write the title, desc, and link
 
 	var i int // Assign empty variable
-	fmt.Println(string(colorBlue), "MAX 8 commands, to exit and save early, enter no input.", string(colorWhite))
+	fmt.Println(string(colorBlue) + "MAX 8 commands, to exit and save early, enter no input at any stage." + string(colorWhite))
 	for i = 1; i <= 8; i++ { // commands part of the page - allows 8
-		fmt.Printf("Command %d/8\n", i)
+		fmt.Printf("Command example %d/8\n", i)
 
-		fmt.Println(" Part 1. Enter a description for a command example:")
+		fmt.Println(string(colorBlue) + string(Underline) + "Part 1." + string(Normal) + " Enter a description for a command example:")
 		command_desc := reader()
 		command_desc = remove_punctuation(command_desc, 1)
 
@@ -132,7 +132,7 @@ func main() {
 
 		command_desc = "- " + capitalise.First(command_desc) + ":"
 
-		fmt.Println(" Part 2. Now enter the corresponding command:") // Part 2
+		fmt.Println(string(colorBlue) + string(Underline) + "Part 2." + string(Normal) + " Now enter the corresponding command:") // Part 2
 		command := reader()
 		command = remove_punctuation(command, 0) // with 0 because we need the backticks to be removed since users may enter them
 
@@ -150,7 +150,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Print("Saving to ", string(colorBlue), path+"/"+pagename, string(colorWhite), " and exiting.\n")
+	fmt.Print("Saving to " + string(colorBlue) + path + "/" + pagename + " " + string(colorWhite) + "and exiting.\n")
 	fmt.Println("If you want to contribute this page to TLDR, please follow the instructions\nfrom the following link:")
-	fmt.Print(string(colorBlue), "https://github.com/tldr-pages/tldr#how-do-i-contribute\n", string(colorWhite))
+	fmt.Print(string(colorBlue) + "https://github.com/tldr-pages/tldr#how-do-i-contribute\n" + string(colorWhite))
 }
