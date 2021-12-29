@@ -153,7 +153,7 @@ func main() {
 	}
 	fmt.Print("Saving to " + string(COLORBLUE) + path + "/" + pagename + " " + string(COLORWHITE) + "and exiting.\n\n")
 
-	fmt.Println("Would you like to open the page in your default text editor?")
+	fmt.Println("Would you like to open the page in your default text editor? (y/N) ")
 	further_edits_choice := Reader()
 	if further_edits_choice == "y" || further_edits_choice == "yes" || further_edits_choice == "Yes" {
 		command_string := "$EDITOR " + pagename
