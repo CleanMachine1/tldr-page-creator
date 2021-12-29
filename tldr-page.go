@@ -151,7 +151,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Print("Saving to " + string(COLORBLUE) + path + "/" + pagename + " " + string(COLORWHITE) + "and exiting.\n\n")
+	fmt.Println("Saving to " + string(COLORBLUE) + path + "/" + pagename + " " + string(COLORWHITE) + "and exiting.\n")
 
 	fmt.Println("Would you like to open the page in your default text editor? (y/N) ")
 	further_edits_choice := Reader()
