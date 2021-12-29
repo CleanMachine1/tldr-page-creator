@@ -12,7 +12,7 @@ import (
 )
 
 const ( // Usage for changing the color of text
-	version     = "v1.3"
+	version     = "v1.4"
 	colorWhite  = "\033[37m"
 	colorBlue   = "\033[36m"
 	colorYellow = "\033[33m"
