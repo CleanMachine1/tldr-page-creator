@@ -11,7 +11,7 @@ import (
 	"github.com/cleanmachine1/capitalise"
 )
 
-const ( // Usage for changing the color of text
+const ( // Usage for program's version and ANSI codes for text formatting
 	version     = "v1.4"
 	colorWhite  = "\033[37m"
 	colorBlue   = "\033[36m"
