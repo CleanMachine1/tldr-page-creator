@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"strings"
 
 	"github.com/cleanmachine1/capitalise"
@@ -150,7 +151,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Print("Saving to " + string(COLORBLUE) + path + "/" + pagename + " " + string(COLORWHITE) + "and exiting.\n")
+	fmt.Print("Saving to " + string(COLORBLUE) + path + "/" + pagename + " " + string(COLORWHITE) + "and exiting.\n\n")
+
+	fmt.Println("Would you like to open the page in your default text editor?")
+	further_edits_choice := Reader()
+	if further_edits_choice == "y" || further_edits_choice == "yes" || further_edits_choice == "Yes" {
+		command_string := "$EDITOR " + pagename
+		cmd := exec.Command(`bash`, `-c`, command_string) // execute the command
+		cmd.Stderr = os.Stderr
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+
 	fmt.Println("If you want to contribute this page to TLDR, please follow the instructions\nfrom the following link:")
 	fmt.Print(string(COLORBLUE) + "https://github.com/tldr-pages/tldr#how-do-i-contribute\n" + string(COLORWHITE))
 }
