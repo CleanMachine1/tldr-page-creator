@@ -32,19 +32,16 @@ func Check_Empty(input string) { // Function used to check if whether a string e
 func Reader() string { // Function for collecting user input easier as a string
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
-	input := scanner.Text()
-	return input
+	return scanner.Text()
 }
 
 func Remove_Punctuation(input string, choice int) string { // Function to fix errors regarding syntax
 	switch choice {
 	case 1:
-		temp := strings.Trim(input, ".:-># ") // without backticks
-		return temp
+		return strings.Trim(input, ".:-># ") // without backticks
 
 	default:
-		temp := strings.Trim(input, ".:`-># ")
-		return temp
+		return strings.Trim(input, ".:`-># ")
 
 	}
 
