@@ -123,7 +123,7 @@ func main() {
 
 		command_desc = capitalise.First(command_desc)
 
-		if command_desc == "" { // Break to end if empty
+		if strings.ReplaceAll(command_desc, " ", "") == "" { // Break to end if empty
 			// Wont use Check_Empty() since we don't want to exit
 			break
 		}
@@ -134,7 +134,7 @@ func main() {
 		command := Reader()
 		command = Remove_Punctuation(command, 0) // with 0 because we need the backticks to be removed since users may enter them
 
-		if command == "" { // Break to end
+		if strings.ReplaceAll(command, " ", "") == "" { // Break to end
 			break
 		}
 
