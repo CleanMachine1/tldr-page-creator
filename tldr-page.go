@@ -13,12 +13,13 @@ import (
 )
 
 const ( // Usage for program's version and ANSI codes for text formatting
-	VERSION     = "v1.5"
+	VERSION     = "v1.6"
 	COLORWHITE  = "\033[37m"
 	COLORBLUE   = "\033[36m"
 	COLORYELLOW = "\033[33m"
 	UNDERLINE   = "\033[4m"
 	NORMAL      = "\033[0m"
+	BOLD        = "\033[1m"
 )
 
 func Check_Empty(input string) { // Function used to check if whether a string entered is empty/whitespace
@@ -113,14 +114,13 @@ func main() {
 	file.WriteString(title + "\n" + "\n" + final_desc + "\n" + link + "\n") // Write the title, desc, and link
 
 	var i int // Assign empty variable
-	fmt.Println(string(COLORBLUE) + "MAX 8 commands, to exit and save early, enter no input at any stage." + string(COLORWHITE))
+	fmt.Println(string(COLORBLUE) + "MAX 8 commands! To exit and save, enter blankspace at any stage." + string(COLORWHITE))
 	for i = 1; i <= 8; i++ { // commands part of the page - allows 8
 		fmt.Printf("Command example %d/8\n", i)
 
-		fmt.Println(string(COLORBLUE) + string(UNDERLINE) + "Part 1." + string(NORMAL) + " Enter a description for a command example:")
+		fmt.Println(string(COLORBLUE) + string(UNDERLINE) + "Part 1." + string(NORMAL) + " Enter a " + string(BOLD) + "description " + string(NORMAL) + "for a command example:")
 		command_desc := Reader()
 		command_desc = Remove_Punctuation(command_desc, 1)
-
 		command_desc = capitalise.First(command_desc)
 
 		if strings.ReplaceAll(command_desc, " ", "") == "" { // Break to end if empty
@@ -130,7 +130,7 @@ func main() {
 
 		command_desc = "- " + capitalise.First(command_desc) + ":"
 
-		fmt.Println(string(COLORBLUE) + string(UNDERLINE) + "Part 2." + string(NORMAL) + " Now enter the corresponding command:") // Part 2
+		fmt.Println(string(COLORBLUE) + string(UNDERLINE) + "Part 2." + string(NORMAL) + " Now enter the corresponding " + string(BOLD) + "command:" + string(NORMAL)) // Part 2
 		command := Reader()
 		command = Remove_Punctuation(command, 0) // with 0 because we need the backticks to be removed since users may enter them
 
@@ -160,6 +160,8 @@ func main() {
 		cmd.Stdin = os.Stdin
 		cmd.Run()
 	}
+
+	
 
 	fmt.Println("If you want to contribute this page to TLDR, please follow the instructions\nfrom the following link:")
 	fmt.Print(string(COLORBLUE) + "https://github.com/tldr-pages/tldr#how-do-i-contribute\n" + string(COLORWHITE))
