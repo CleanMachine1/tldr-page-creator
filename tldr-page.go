@@ -13,7 +13,7 @@ import (
 )
 
 const ( // Usage for program's version and ANSI codes for text formatting
-	VERSION     = "v1.6"
+	VERSION     = "v1.8"
 	COLORWHITE  = "\033[37m"
 	COLORBLUE   = "\033[36m"
 	COLORYELLOW = "\033[33m"
