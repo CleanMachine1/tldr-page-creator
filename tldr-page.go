@@ -60,7 +60,7 @@ func main() {
 		os.Exit(0)
 	}
 
-	fmt.Println("Enter the name of the program/command:")
+	fmt.Println("Enter the name of the program/command: \n")
 	title := Reader()                    // Uses bufio in a function to limit repeated code
 	Check_Empty(title)                   // Check if title is whitespace/blank
 	title = Remove_Punctuation(title, 1) // Removes the punctuation which the user could enter
@@ -83,7 +83,7 @@ func main() {
 	}
 	title = "# " + title // For when writing to page, for TLDR syntax
 
-	fmt.Println("Enter a description for the program/command:")
+	fmt.Println("Enter a description for the program/command: \n")
 	desc1 := Reader()
 	Check_Empty(desc1)
 	desc1 = Remove_Punctuation(desc1, 1)
@@ -91,7 +91,7 @@ func main() {
 	final_desc := "> " + capitalise.First(desc1) + "."
 
 	if *double_desc_flag { // If the flag is raised then:
-		fmt.Println("Enter a second description for the program/command:")
+		fmt.Println("Enter a second description for the program/command: \n")
 		desc2 := Reader()
 		Check_Empty(desc2)
 		desc2 = Remove_Punctuation(desc2, 1)
@@ -100,7 +100,7 @@ func main() {
 		final_desc = final_desc + "\n> " + capitalise.First(desc2) + "."
 	}
 
-	fmt.Println("Enter a more information link:")
+	fmt.Println("Enter a more information link: \n")
 	link := Reader()
 	Check_Empty(link)
 	link = "> More information: <" + link + ">." // Formating
@@ -114,11 +114,11 @@ func main() {
 	file.WriteString(title + "\n" + "\n" + final_desc + "\n" + link + "\n") // Write the title, desc, and link
 
 	var i int // Assign empty variable
-	fmt.Println(string(COLORBLUE) + "MAX 8 commands! To exit and save, enter blankspace at any stage." + string(COLORWHITE))
+	fmt.Println(string(COLORBLUE) + "\nMAX 8 commands! To exit and save, enter blankspace at any stage." + string(COLORWHITE))
 	for i = 1; i <= 8; i++ { // commands part of the page - allows 8
 		fmt.Printf("Command example %d/8\n", i)
 
-		fmt.Println(string(COLORBLUE) + string(UNDERLINE) + "Part 1." + string(NORMAL) + " Enter a " + string(BOLD) + "description " + string(NORMAL) + "for a command example:")
+		fmt.Println(string(COLORBLUE) + string(UNDERLINE) + "Part 1." + string(NORMAL) + " Enter a " + string(BOLD) + "description " + string(NORMAL) + "for a command example: \n")
 		command_desc := Reader()
 		command_desc = Remove_Punctuation(command_desc, 1)
 		command_desc = capitalise.First(command_desc)
@@ -130,7 +130,7 @@ func main() {
 
 		command_desc = "- " + capitalise.First(command_desc) + ":"
 
-		fmt.Println(string(COLORBLUE) + string(UNDERLINE) + "Part 2." + string(NORMAL) + " Now enter the corresponding " + string(BOLD) + "command:" + string(NORMAL)) // Part 2
+		fmt.Println(string(COLORBLUE) + string(UNDERLINE) + "Part 2." + string(NORMAL) + " Now enter the corresponding " + string(BOLD) + "command: \n" + string(NORMAL)) // Part 2
 		command := Reader()
 		command = Remove_Punctuation(command, 0) // with 0 because we need the backticks to be removed since users may enter them
 
@@ -154,15 +154,15 @@ func main() {
 	further_edits_choice := Reader()
 	if further_edits_choice == "y" || further_edits_choice == "yes" || further_edits_choice == "Yes" {
 		command_string := "$EDITOR " + pagename           // prepare a string for the exec.Command to use
-		cmd := exec.Command(`bash`, `-c`, command_string) // execute the command
+		cmd := exec.Command(`bash`, `-c`, command_string) 
 		cmd.Stderr = os.Stderr
 		cmd.Stdout = os.Stdout
 		cmd.Stdin = os.Stdin
-		cmd.Run()
+		cmd.Run() // Run the command which has been defined
 	}
 
 	
 
-	fmt.Println("If you want to contribute this page to TLDR, please follow the instructions\nfrom the following link:")
+	fmt.Println("\nIf you want to contribute this page to TLDR, please follow the instructions\nfrom the following link:")
 	fmt.Print(string(COLORBLUE) + "https://github.com/tldr-pages/tldr#how-do-i-contribute\n" + string(COLORWHITE))
 }
